@@ -16,7 +16,7 @@ public class StudentRestController {
     private final StudentService studentService;
 
     @DeleteMapping("/delete/{id}")
-    private ResponseEntity<?> deleteCategory(@PathVariable("id") String id) {
+    private ResponseEntity<?> deleteStudent(@PathVariable("id") String id) {
         studentService.deleteStudent(id);
         return ResponseEntity.ok(true);
     }
