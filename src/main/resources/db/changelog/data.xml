@@ -1,0 +1,36 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.9.xsd">
+    <changeSet id="Populate-table-student-table" author="Ilya Zhdanov">
+        <insert tableName="student_table">
+            <column name="id" value="467f7d92-f98a-4d72-810c-53dcb9fa5de5"/>
+            <column name="name" value="Nikita"/>
+            <column name="surname" value="Bashlikov"/>
+            <column name="patronymic" value="Yaroslavovich"/>
+            <column name="date_of_birth" value="2000-02-03"/>
+            <column name="study_group" value="P-22"/>
+        </insert>
+        <insert tableName="student_table">
+            <column name="id" value="a26d5cba-efa9-4a38-83b5-88186b0bb3a1"/>
+            <column name="name" value="Dima"/>
+            <column name="surname" value="Harin"/>
+            <column name="patronymic" value="Olegovich"/>
+            <column name="date_of_birth" value="2001-04-22"/>
+            <column name="study_group" value="СП-22"/>
+        </insert>
+        <insert tableName="student_table">
+            <column name="id" value="254dafc1-6299-4740-bbec-dc12bf58ce83"/>
+            <column name="name" value="Oleg"/>
+            <column name="surname" value="Vostrov"/>
+            <column name="patronymic" value="Artemovich"/>
+            <column name="date_of_birth" value="1999-12-19"/>
+            <column name="study_group" value="ПКС-22"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create or update</title>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/save}" th:if="${student.id == null}">
+        <!--<div>
+            <input id="id-of-student" th:field="${student.id}" readonly="readonly" type="hidden">
+        </div>-->
+        <div>
+            <label th:for="name-of-student">Имя студента</label></br>
+            <input id="name-of-student" th:field="${student.name}"  type="text">
+            <p th:if="${#fields.hasErrors('student.name')}"  th:errors="${student.name}"/>
+        </div>
+        <div>
+            <label th:for="surname-of-student">Фамилия студента</label></br>
+            <input id="surname-of-student" th:field="${student.surname}"  type="text">
+            <p th:if="${#fields.hasErrors('student.surname')}"  th:errors="${student.surname}"/>
+        </div>
+        <div>
+            <label th:for="patronymic-of-student">Отчество студента (необязательно)</label></br>
+            <input id="patronymic-of-student" th:field="${student.patronymic}"  type="text">
+            <p th:if="${#fields.hasErrors('student.patronymic')}"  th:errors="${student.patronymic}"/>
+        </div>
+        <div>
+            <label th:for="dateOfBirth-of-student">Дата рождения</label></br>
+            <input id="dateOfBirth-of-student" th:field="${student.dateOfBirth}"  type="date">
+        </div>
+        <div>
+            <label th:for="studyGroup-of-student">Группа в которую будет зачислен студент</label></br>
+            <input id="studyGroup-of-student" th:field="${student.studyGroup}"  type="text">
+            <p th:if="${#fields.hasErrors('student.studyGroup')}"  th:errors="${student.studyGroup}"/>
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+    <form th:method="PATCH" th:action="@{/save}" th:unless="${student.id == null}">
+        <div>
+            <input id="id-of-student" th:field="${student.id}" readonly="readonly" type="hidden">
+        </div>
+        <div>
+            <label th:for="name-of-student">Имя студента</label></br>
+            <input id="name-of-student" th:field="${student.name}"  type="text">
+            <p th:if="${#fields.hasErrors('student.name')}"  th:errors="${student.name}"/>
+        </div>
+        <div>
+            <label th:for="surname-of-student">Фамилия студента</label></br>
+            <input id="surname-of-student" th:field="${student.surname}"  type="text">
+            <p th:if="${#fields.hasErrors('student.surname')}"  th:errors="${student.surname}"/>
+            <p th:if="${#fields.hasErrors('student.patronymic')}"  th:errors="${student.patronymic}"/>
+        </div>
+        <div>
+            <label th:for="patronymic-of-student">Отчество студента (необязательно)</label></br>
+            <input id="patronymic-of-student" th:field="${student.patronymic}"  type="text">
+        </div>
+        <div>
+            <label th:for="dateOfBirth-of-student">Дата рождения</label></br>
+            <input id="dateOfBirth-of-student" th:field="${student.dateOfBirth}"  type="date">
+        </div>
+        <div>
+            <label th:for="studyGroup-of-student">Группа в которую будет зачислен студент</label></br>
+            <input id="studyGroup-of-student" th:field="${student.studyGroup}"  type="text">
+            <p th:if="${#fields.hasErrors('student.studyGroup')}"  th:errors="${student.studyGroup}"/>
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>

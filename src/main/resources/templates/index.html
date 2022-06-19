@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>AllStudents</title>
+    <script src="/webjars/jquery/3.6.0/jquery.js"></script>
+    <script>
+        $(function () {
+            $("a[id^='student_']").click(function (event) {
+                if (confirm('Are you sure to delete this student?')) {
+                    let studentCode = $(this).attr('name').replace('student_', '');
+                    $.ajax({
+                        url: '/api/delete/' + studentCode,
+                        type: 'DELETE',
+                        success: function () {
+                            console.log(studentCode);
+                            location.reload();
+                        },
+                    });
+                }
+                event.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>Имя</tr>
+                <tr>Фамилия</tr>
+                <tr>Отчество</tr>
+                <tr>Дата рождения</tr>
+                <tr>Группа</tr>
+                <tr>Действие</tr>
+            </thead>
+            <tbody>
+                <tr th:each="student: ${students}">
+                    <td th:text="${student.getName()}">Имя</td>
+                    <td th:text="${student.getSurname()}">Фамилия</td>
+                    <td th:text="${student.getPatronymic()}">Отчество</td>
+                    <td th:text="${#dates.format(student.getDateOfBirth(), 'yyyy-MM-dd')}">Дата рождения</td>
+                    <td th:text="${student.getStudyGroup()}">Группа</td>
+                    <td>
+                        <a th:id="${student.idStr}" th:name="${student.idStr}" th:href="@{/}">Удалить</a>
+                        <a th:href="@{/update/{id}(id=${student.getId()})}">Обновить</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/create}">Добавить студента</a>
+    </div>
+</body>
+</html>
